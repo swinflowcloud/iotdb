@@ -1137,15 +1137,7 @@ public class MetaGroupMember extends RaftMember {
             size, readCnt));
       }
 
-      partitionTable = new SlotPartitionTable(thisNode);
-      partitionTable.deserialize(ByteBuffer.wrap(tableBuffer));
-      allNodes = new ArrayList<>(partitionTable.getAllNodes());
-      initPeerMap();
-      for (Node node : allNodes) {
-        idNodeMap.put(node.getNodeIdentifier(), node);
-      }
-      router = new ClusterPlanRouter(partitionTable);
-      startSubServers();
+      acceptPartitionTable(ByteBuffer.wrap(tableBuffer));
 
       logger.info("Load {} nodes: {}", allNodes.size(), allNodes);
     } catch (IOException e) {

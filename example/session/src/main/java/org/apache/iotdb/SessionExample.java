@@ -42,7 +42,7 @@ public class SessionExample {
 
   public static void main(String[] args)
       throws IoTDBConnectionException, StatementExecutionException {
-    session = new Session("127.0.0.1", 6667, "root", "root");
+    session = new Session("127.0.0.1", 55560, "root", "root");
     session.open(false);
 
     try {
@@ -52,18 +52,20 @@ public class SessionExample {
         throw e;
     }
 
-    createTimeseries();
+//    createTimeseries();
+    System.out.println("start create timeseries ");
     createMultiTimeseries();
-    insertRecord();
-    insertTablet();
-    insertTablets();
-    insertRecords();
-    nonQuery();
-    query();
-    rawDataQuery();
-    queryByIterator();
-    deleteData();
-    deleteTimeseries();
+    System.out.println("end create timeseries");
+//    insertRecord();
+//    insertTablet();
+//    insertTablets();
+//    insertRecords();
+//    nonQuery();
+//    query();
+//    rawDataQuery();
+//    queryByIterator();
+//    deleteData();
+//    deleteTimeseries();
     session.close();
   }
 
